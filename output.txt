@@ -2,7 +2,7 @@
 <p>Some <em>headers</em></p>
 <p>\--\*</p>
 <p>Single * _ - ` -- is not a tag</p>
-<p>We also have escape character: \** \__text<strong></strong>___</p>
+<p>We also have escape character: \** \__text__</p>
 <h3>H3</h3>
 <h4>H4</h4>
 <p>But this is not headers
@@ -26,3 +26,4 @@ different lines</em></strong></p>
 ## Not H2
 ### Not H3
 This is only in H1 tag</h1>
+<p>Test string</p>
