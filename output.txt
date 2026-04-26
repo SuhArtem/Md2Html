@@ -1,4 +1,5 @@
 <p><strong>This <code>text</code> contains <s>nested</s> tags.</strong></p>
+<p><code>Inside code tag specifier character transform to mnemonic: &gt; &lt; &amp;</code></p>
 <p>Some <em>headers</em></p>
 <p>\--\*</p>
 <p>Single * _ - ` -- is not a tag</p>

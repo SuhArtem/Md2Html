@@ -1,4 +1,5 @@
 from markup.inlineTags.inlineMarkup import InlineMarkup
+from html import escape
 
 
 class Binary(InlineMarkup):
@@ -32,11 +33,15 @@ class Strong(Binary):
         return 'strong'
 
 
-class Code(
-    Binary):  # внутри кода весь текст теряет разметку, лучше его не наследовать от inlineMarkup и написать как отдельный класс либо всегда в нем хранить только текст
+class Code(Binary):
     @property
     def tag(self):
         return "code"
+
+    def toHtml(self):
+        return (f"<{self.tag}>" +
+                f"{escape(''.join([el.toHtml() for el in self.elements]))}" +
+                f"{f'</{self.tag}>' if self.isNeedEndTag else ''}")
 
 
 # shortcut binary tag name

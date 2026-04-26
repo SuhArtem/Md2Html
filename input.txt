@@ -1,5 +1,7 @@
 __This `text` contains --nested-- tags.__
 
+`Inside code tag specifier character transform to mnemonic: > < &`
+
 Some *headers*
 
 \--\*
