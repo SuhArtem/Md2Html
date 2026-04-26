@@ -82,7 +82,6 @@ class Md2Html:
             elif lexeme.type == LexemeType.TEXT:
                 return mark + [Text(lexeme.value)] + self._string_handler(lexemes, last_sign)
             elif lexeme.type == LexemeType.SHIELD:
-                mark.append(Text(lexeme.value))
                 mark.append(Text(lexemes.next().value))
             else:
                 val = self._string_handler(lexemes, lexeme)

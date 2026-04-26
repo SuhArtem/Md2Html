@@ -1,9 +1,9 @@
 <p><strong>This <code>text</code> contains <s>nested</s> tags.</strong></p>
 <p><code>Inside code tag specifier character transform to mnemonic: &gt; &lt; &amp;</code></p>
 <p>Some <em>headers</em></p>
-<p>\--\*</p>
+<p>--* - escaped character</p>
 <p>Single * _ - ` -- is not a tag</p>
-<p>We also have escape character: \** \__text__</p>
+<p>We also have escape character: ** __text__</p>
 <h3>H3</h3>
 <h4>H4</h4>
 <p>But this is not headers

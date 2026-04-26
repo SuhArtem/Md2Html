@@ -4,11 +4,11 @@ __This `text` contains --nested-- tags.__
 
 Some *headers*
 
-\--\*
+\--\* - escaped character
 
 Single * _ - ` -- is not a tag
 
-We also have escape character: \** \__text__
+We also have escape character: \** \__text\__
 
 ### H3
 
