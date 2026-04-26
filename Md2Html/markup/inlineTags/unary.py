@@ -1,4 +1,4 @@
-from markup.blockMarkup import BlockMarkup
+from markup.blockTags.blockMarkup import BlockMarkup
 
 class lineBreak(BlockMarkup):
 

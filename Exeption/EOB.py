@@ -1,0 +1,3 @@
+
+class EndOfBuffer(EOFError):
+    pass

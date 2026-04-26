@@ -1,0 +1,45 @@
+__This `text` contains --nested-- tags.__
+
+Some *headers*
+
+\--\*
+
+Single * _ - ` -- is not a tag
+
+We also have escape character: \** \__text__
+
+### H3
+
+#### H4
+
+But this is not headers
+### H3
+## H2
+This is text block in one paragraph
+
+**Tags work _on
+different lines_**
+
+__Strong underscore tag__
+**Strong star tag**
+*Emphasis star tag*
+_Emphasis underscore tag_
+--strikeout hyphen tag--
+
+# Head1
+
+## Head2
+
+### Head3
+
+#### Head4
+
+##### Head5
+
+###### Head6
+
+# H1
+## Not H2
+### Not H3
+This is only in H1 tag
+
