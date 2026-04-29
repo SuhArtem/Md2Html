@@ -32,8 +32,13 @@ class Strong(Binary):
     def tag(self):
         return 'strong'
 
+class Sample(Binary):
+    @property
+    def tag(self):
+        return 'samp'
 
-class Code(Binary):
+
+class Code(Binary): # TODO: Must be located in a special folder with the implementation.
     @property
     def tag(self):
         return "code"
@@ -50,5 +55,6 @@ BTN = {
     'p': Paragraph,
     's': Strikeout,
     'strong': Strong,
-    'code': Code
+    'code': Code,
+    'samp': Sample
 }

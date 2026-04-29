@@ -1,7 +1,7 @@
 <p><strong>This <code>text</code> contains <s>nested</s> tags.</strong></p>
 <p><code>Inside code tag specifier character transform to mnemonic: &gt; &lt; &amp;</code></p>
 <p>Some <em>headers</em></p>
-<p>--* - escaped character</p>
+<p>-- * - escaped character</p>
 <p>Single * _ - ` -- is not a tag</p>
 <p>We also have escape character: ** __text__</p>
 <h3>H3</h3>
@@ -27,4 +27,4 @@ different lines</em></strong></p>
 ## Not H2
 ### Not H3
 This is only in H1 tag</h1>
-<p>Test string</p>
+<p><samp> Sample <em>text</em> tag </samp></p>

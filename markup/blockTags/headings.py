@@ -1,44 +1,22 @@
+from typing import Union
+
 from .blockMarkup import BlockMarkup
+from ..markup import MarkUp
 
 
-class heading(BlockMarkup):
+class Heading(BlockMarkup):
+    _min_head_tag_size = 1
+    _max_head_tag_size = 6
+    _head_tags = dict([(i, f"h{i}") for i in range(_min_head_tag_size, _max_head_tag_size + 1)])
+
+    def __init__(self, elements: Union[list[MarkUp], MarkUp], / , size=1):
+        super().__init__(elements)
+        self.size = size
 
     @property
     def isNeedEndTag(self):
         return True
 
-
-class H1(heading):  # TODO: All of thees H{i} class should be in one class
     @property
     def tag(self):
-        return "h1"
-
-
-class H2(heading):
-    @property
-    def tag(self):
-        return "h2"
-
-
-class H3(heading):
-    @property
-    def tag(self):
-        return "h3"
-
-
-class H4(heading):
-    @property
-    def tag(self):
-        return "h4"
-
-
-class H5(heading):
-    @property
-    def tag(self):
-        return "h5"
-
-
-class H6(heading):
-    @property
-    def tag(self):
-        return "h6"
+        return self._head_tags[self.size]

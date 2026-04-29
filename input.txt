@@ -4,7 +4,7 @@ __This `text` contains --nested-- tags.__
 
 Some *headers*
 
-\--\* - escaped character
+\-- \* - escaped character
 
 Single * _ - ` -- is not a tag
 
@@ -45,4 +45,4 @@ _Emphasis underscore tag_
 ### Not H3
 This is only in H1 tag
 
-Test string
+!! Sample _text_ tag !!

@@ -1,4 +1,3 @@
-from typing import Any
 
 from markup.markup import MarkUp
 from markup.inlineTags.unary import *
@@ -41,46 +40,27 @@ class Md2Html:
 
         for string in self.strings:
             if string != '\n':
-                self.htmlStrings += [self.handler(LexemeBuffer(LexemeAnalyzer(string).lexemeAnalise()))] + [Text('\n')]
+                self.htmlStrings += [self._handler(LexemeBuffer(LexemeAnalyzer(string).lexemeAnalise()))] + [Text('\n')]
 
         self._write()
 
-    def handler(self, lexemes: LexemeBuffer) -> MarkUp:
-        wrap = Paragraph
+    def _handler(self, lexemes: LexemeBuffer) -> MarkUp:
+        wrap = lexemes.next()
+        if wrap.type == LexemeType.HEADER:
+            return Heading(self._string_handler(lexemes), size=wrap.value)
+        elif wrap.type == LexemeType.PARAGRAPH:
+            return Paragraph(self._string_handler(lexemes))
+        return Text('')
 
-        firstString = lexemes.next()  # TODO: Move this code block to the LexemeAnalyzer
-        if firstString.type == LexemeType.TEXT:
-            if firstString.value.startswith("# "):
-                wrap = H1
-                firstString.value = firstString.value[2:]
-            elif firstString.value.startswith("## "):
-                wrap = H2
-                firstString.value = firstString.value[3:]
-            elif firstString.value.startswith("### "):
-                wrap = H3
-                firstString.value = firstString.value[4:]
-            elif firstString.value.startswith("#### "):
-                wrap = H4
-                firstString.value = firstString.value[5:]
-            elif firstString.value.startswith("##### "):
-                wrap = H5
-                firstString.value = firstString.value[6:]
-            elif firstString.value.startswith("###### "):
-                wrap = H6
-                firstString.value = firstString.value[7:]
-        lexemes.back()
-
-        return wrap(self._string_handler(lexemes))
-
-    def _string_handler(self, lexemes: LexemeBuffer, last_sign: Lexeme = Lexeme(LexemeType.DEFAULT, '')) -> list[MarkUp]:
+    def _string_handler(self, lexemes: LexemeBuffer, last_tag: Lexeme = Lexeme(LexemeType.DEFAULT, '')) -> list[MarkUp]:
         lexeme = lexemes.next()
         mark = []
         while lexeme:
-            if lexeme.type == last_sign.type or lexeme.type == LexemeType.EOF:
+            if lexeme.type == last_tag.type or lexeme.type == LexemeType.EOF:
                 lexemes.back()
                 break
             elif lexeme.type == LexemeType.TEXT:
-                return mark + [Text(lexeme.value)] + self._string_handler(lexemes, last_sign)
+                return mark + [Text(lexeme.value)] + self._string_handler(lexemes, last_tag)
             elif lexeme.type == LexemeType.SHIELD:
                 mark.append(Text(lexemes.next().value))
             else:
@@ -90,6 +70,8 @@ class Md2Html:
                         mark.append(Strikeout(val))
                     elif lexeme.type == LexemeType.CODE:
                         mark.append(Code(val))
+                    elif lexeme.type == LexemeType.SAMPLE:
+                        mark.append(Sample(val))
                     elif lexeme.type == LexemeType.STRONG_STAR or lexeme.type == LexemeType.STRONG_DOWN:
                         mark.append(Strong(val))
                     elif lexeme.type == LexemeType.EMPHASIS_STAR or lexeme.type == LexemeType.EMPHASIS_DOWN:
