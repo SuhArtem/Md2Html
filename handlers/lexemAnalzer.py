@@ -66,7 +66,7 @@ class LexemeAnalyzer:
     def lexemeAnalise(self) -> list[Lexeme]:
         lexemes = []
         for k in range(1, 6 + 1): # from h1 to h6
-            if self.string.startswith(f"{'#'*k} "):
+            if self.string.startswith(f"{'#'*k} "): # https://i.ytimg.com/vi/M2vKkHfz5jE/maxresdefault.jpg (цикл с асимптотикой в n^2 чтобы посчитать хештегики?)
                 lexemes.append(Lexeme(LexemeType.HEADER, k))
                 self.string = self.string[k + 1:]
                 break
